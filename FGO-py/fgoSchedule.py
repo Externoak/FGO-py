@@ -5,6 +5,7 @@ class Schedule:
     def __init__(self):
         self.reset()
         self.__stopOnDefeatedFlag=False
+        self.__stopOnMaxBattles = False
         self.__stopOnKizunaReisouFlag=False
         self.__stopOnSpecialDropCount=0
     def reset(self):
@@ -33,6 +34,7 @@ class Schedule:
     def stopOnDefeated(self,x):self.__stopOnDefeatedFlag=x
     def checkDefeated(self):
         if self.__stopOnDefeatedFlag:raise ScriptStop('Battle Defeated')
+    def stopOnMaxBattles(self):raise ScriptStop('Max Battles Reached')
     def stopOnKizunaReisou(self,x):self.__stopOnKizunaReisouFlag=x
     def checkKizunaReisou(self):
         if self.__stopOnKizunaReisouFlag:raise ScriptStop('Kizuna Reisou')

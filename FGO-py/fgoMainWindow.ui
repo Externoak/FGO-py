@@ -117,13 +117,36 @@
        </widget>
       </item>
       <item row="2" column="0">
+       <widget class="QLabel" name="LBL_MAX_BATTLES">
+        <property name="text">
+         <string>马克斯战斗</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="TXT_MAX_BATTLES">
+        <property name="contextMenuPolicy">
+         <enum>Qt::NoContextMenu</enum>
+        </property>
+        <property name="statusTip">
+         <string>停止前的最多战斗次数，0 表示不停战斗</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="maximum">
+         <number>99</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
        <widget class="QLabel" name="LBL_CURRENTDEVICE">
         <property name="text">
          <string>当前设备</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="3" column="1">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="LBL_DEVICE">
@@ -472,6 +495,7 @@
  </widget>
  <tabstops>
   <tabstop>TXT_TEAM</tabstop>
+  <tabstop>TXT_MAX_BATTLES</tabstop>
   <tabstop>CBX_APPLE</tabstop>
   <tabstop>TXT_APPLE</tabstop>
   <tabstop>BTN_CONNECT</tabstop>

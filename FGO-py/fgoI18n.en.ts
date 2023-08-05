@@ -463,6 +463,16 @@
     </message>
     <message>
         <location filename="fgoMainWindow.ui" line="0"/>
+        <source>马克斯战斗</source>
+        <translation>Max Battles</translation>
+    </message>
+    <message>
+        <location filename="fgoMainWindow.ui" line="0"/>
+        <source>停止前的最多战斗次数，0 表示不停战斗</source>
+        <translation>Max number of battles before stopping,0 for non-stop</translation>
+    </message>
+    <message>
+        <location filename="fgoMainWindow.ui" line="0"/>
         <source>当前设备</source>
         <translation>Current device</translation>
     </message>

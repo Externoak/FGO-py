@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'fgoMainWindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.1
+## Created by: Qt User Interface Compiler version 6.5.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -129,10 +129,23 @@ class Ui_fgoMainWindow(object):
 
         self.LAYOUT_INFO.setWidget(0, QFormLayout.FieldRole, self.TXT_TEAM)
 
+        self.LBL_MAX_BATTLES = QLabel(self.widget)
+        self.LBL_MAX_BATTLES.setObjectName(u"LBL_MAX_BATTLES")
+
+        self.LAYOUT_INFO.setWidget(2, QFormLayout.LabelRole, self.LBL_MAX_BATTLES)
+
+        self.TXT_MAX_BATTLES = QSpinBox(self.widget)
+        self.TXT_MAX_BATTLES.setObjectName(u"TXT_MAX_BATTLES")
+        self.TXT_MAX_BATTLES.setContextMenuPolicy(Qt.NoContextMenu)
+        self.TXT_MAX_BATTLES.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.TXT_MAX_BATTLES.setMaximum(99)
+
+        self.LAYOUT_INFO.setWidget(2, QFormLayout.FieldRole, self.TXT_MAX_BATTLES)
+
         self.LBL_CURRENTDEVICE = QLabel(self.widget)
         self.LBL_CURRENTDEVICE.setObjectName(u"LBL_CURRENTDEVICE")
 
-        self.LAYOUT_INFO.setWidget(2, QFormLayout.LabelRole, self.LBL_CURRENTDEVICE)
+        self.LAYOUT_INFO.setWidget(3, QFormLayout.LabelRole, self.LBL_CURRENTDEVICE)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -153,7 +166,7 @@ class Ui_fgoMainWindow(object):
         self.horizontalLayout.addWidget(self.BTN_CONNECT)
 
 
-        self.LAYOUT_INFO.setLayout(2, QFormLayout.FieldRole, self.horizontalLayout)
+        self.LAYOUT_INFO.setLayout(3, QFormLayout.FieldRole, self.horizontalLayout)
 
 
         self.verticalLayout.addLayout(self.LAYOUT_INFO)
@@ -243,7 +256,8 @@ class Ui_fgoMainWindow(object):
         self.STATUS = QStatusBar(fgoMainWindow)
         self.STATUS.setObjectName(u"STATUS")
         fgoMainWindow.setStatusBar(self.STATUS)
-        QWidget.setTabOrder(self.TXT_TEAM, self.CBX_APPLE)
+        QWidget.setTabOrder(self.TXT_TEAM, self.TXT_MAX_BATTLES)
+        QWidget.setTabOrder(self.TXT_MAX_BATTLES, self.CBX_APPLE)
         QWidget.setTabOrder(self.CBX_APPLE, self.TXT_APPLE)
         QWidget.setTabOrder(self.TXT_APPLE, self.BTN_CONNECT)
         QWidget.setTabOrder(self.BTN_CONNECT, self.BTN_MAIN)
@@ -363,6 +377,10 @@ class Ui_fgoMainWindow(object):
         self.LBL_TEAM.setText(QCoreApplication.translate("fgoMainWindow", u"\u7f16\u961f\u4f4d\u7f6e", None))
 #if QT_CONFIG(statustip)
         self.TXT_TEAM.setStatusTip(QCoreApplication.translate("fgoMainWindow", u"\u6240\u9009\u7f16\u961f\u5728\u961f\u4f0d\u7f16\u6210\u754c\u9762\u7684\u4f4d\u7f6e,\u4ece\u5de6\u5230\u53f31-10,0\u4e3a\u65e0\u6548", None))
+#endif // QT_CONFIG(statustip)
+        self.LBL_MAX_BATTLES.setText(QCoreApplication.translate("fgoMainWindow", u"\u9a6c\u514b\u65af\u6218\u6597", None))
+#if QT_CONFIG(statustip)
+        self.TXT_MAX_BATTLES.setStatusTip(QCoreApplication.translate("fgoMainWindow", u"\u505c\u6b62\u524d\u7684\u6700\u591a\u6218\u6597\u6b21\u6570\uff0c0 \u8868\u793a\u4e0d\u505c\u6218\u6597", None))
 #endif // QT_CONFIG(statustip)
         self.LBL_CURRENTDEVICE.setText(QCoreApplication.translate("fgoMainWindow", u"\u5f53\u524d\u8bbe\u5907", None))
 #if QT_CONFIG(statustip)

@@ -42,6 +42,7 @@ Some commands support <command> [<subcommand> ...] {{-h, --help}} for further in
         fgoKernel.schedule.stopOnDefeated(self.config.stopOnDefeated)
         fgoKernel.schedule.stopOnKizunaReisou(self.config.stopOnKizunaReisou)
         fgoKernel.Main.teamIndex=self.config.teamIndex
+        fgoKernel.Main.maxBattles=self.config.maxBattles
     def emptyline(self):return
     def precmd(self,line):
         if line:logger.info(line)
@@ -86,6 +87,9 @@ Some commands support <command> [<subcommand> ...] {{-h, --help}} for further in
     def teamup_set_index(self,arg):
         self.config.teamIndex=fgoKernel.Main.teamIndex=arg.value
         print('Set team index to',arg.value)
+    def set_max_battles(self,arg):
+        self.config.maxBattles=arg.value
+        print('Set Max Battles to',arg.value)
     def do_exec(self,line):exec(line)
     def do_shell(self,line):os.system(line)
     def do_exit(self,line):
@@ -269,6 +273,8 @@ parser_teamup_set_master=parser_teamup_set_.add_parser('master',help='Setup mast
 parser_teamup_set_master.add_argument('value',help='Info value (e.g. 1107-xxxx-21347, add hyphens(-) anywhere as they will be removed, x for no change)',type=str.upper)
 parser_teamup_set_index=parser_teamup_set_.add_parser('index',help='Setup team index')
 parser_teamup_set_index.add_argument('value',help='Team index (0-10)',type=int,choices=range(0,11))
+parser_set_max_battles=parser_teamup_set_.add_parser('index',help='Setup max battles')
+parser_set_max_battles.add_argument('max',help='Number of battles before stopping',type=int,choices=range(0,99))
 
 parser_call=ArgParser(prog='call',description=Cmd.do_call.__doc__)
 parser_call.add_argument('func',help='Additional feature name',choices=['fpSummon','lottery','mail','synthesis','dailyFpSummon','summonHistory'])

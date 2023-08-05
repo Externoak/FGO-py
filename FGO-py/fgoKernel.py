@@ -398,11 +398,12 @@ class Battle:
             'material':self.material,
         }
 class Main:
-    teamIndex=0
-    def __init__(self,appleTotal=0,appleKind=0,battleClass=Battle):
+    def __init__(self,appleTotal=0,appleKind=0,maxBattles=0,teamIndex=0,battleClass=Battle):
         self.appleTotal=appleTotal
         self.appleKind=appleKind
+        self.maxBattles=maxBattles
         self.battleClass=battleClass
+        self.teamIndex=teamIndex
         self.appleCount=0
         self.battleCount=0
     @serialize(mutex)
@@ -433,8 +434,11 @@ class Main:
                 elif Detect.cache.isAddFriend():fgoDevice.device.perform('X',(300,))
                 elif Detect.cache.isSpecialDropSuspended():fgoDevice.device.perform('\x1B',(300,))
                 fgoDevice.device.press('\xBB')
+                if self.maxBattles != 0 and self.maxBattles == self.battleCount:
+                    logger.info(f'Battle {self.battleCount}/{self.maxBattles} reached, stopping...')
+                    schedule.stopOnMaxBattles()
             self.battleCount+=1
-            logger.info(f'Battle {self.battleCount}')
+            logger.info(f'Battle {self.battleCount}') if self.maxBattles == 0 else logger.info(f'Battle {self.battleCount}/{self.maxBattles}')
             if self.battleProc():
                 battleResult=self.battleProc.result
                 self.battleTurn+=battleResult['turn']

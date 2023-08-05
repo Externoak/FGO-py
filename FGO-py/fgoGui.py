@@ -38,6 +38,7 @@ class MainWindow(QMainWindow,Ui_fgoMainWindow):
         for key,ui,callback in[
             ('teamIndex',self.TXT_TEAM,lambda x:setattr(fgoKernel.Main,'teamIndex',x)),
             ('stopOnDefeated',self.MENU_SETTINGS_DEFEATED,fgoKernel.schedule.stopOnDefeated),
+            ('maxBattles', self.TXT_MAX_BATTLES, lambda x:setattr(fgoKernel.Main,'maxBattles',x)),
             ('stopOnKizunaReisou',self.MENU_SETTINGS_KIZUNAREISOU,fgoKernel.schedule.stopOnKizunaReisou),
             ('closeToTray',self.MENU_CONTROL_TRAY,None),
             ('stayOnTop',self.MENU_CONTROL_STAYONTOP,lambda x:(self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint,x),self.show())),
@@ -152,11 +153,11 @@ class MainWindow(QMainWindow,Ui_fgoMainWindow):
         fgoDevice.device=fgoDevice.Device(text)
         self.LBL_DEVICE.setText(fgoDevice.device.name)
         self.MENU_CONTROL_MAPKEY.setChecked(False)
-    def runMain(self):self.runFunc(fgoKernel.Main(self.TXT_APPLE.value(),self.CBX_APPLE.currentIndex()))
+    def runMain(self):self.runFunc(fgoKernel.Main(self.TXT_APPLE.value(),self.CBX_APPLE.currentIndex(),self.TXT_MAX_BATTLES.value(),self.TXT_TEAM.value()))
     def runBattle(self):self.runFunc(fgoKernel.Battle())
     def runClassic(self):
         if not Teamup(self).exec():return
-        self.runFunc(fgoKernel.Main(self.TXT_APPLE.value(),self.CBX_APPLE.currentIndex(),lambda:fgoKernel.Battle(fgoKernel.ClassicTurn)))
+        self.runFunc(fgoKernel.Main(self.TXT_APPLE.value(),self.CBX_APPLE.currentIndex(),self.TXT_MAX_BATTLES.value(),self.TXT_TEAM.value(),lambda:fgoKernel.Battle(fgoKernel.ClassicTurn)))
     def pause(self,x):
         if not x and not self.isDeviceAvailable():return self.BTN_PAUSE.setChecked(True)
         fgoKernel.schedule.pause()

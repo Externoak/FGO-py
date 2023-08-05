@@ -3,6 +3,7 @@ CONFIG={
 'runOnce':'',
 'device':'',
 'teamIndex':0,
+'maxBattles':0,
 'farming':False,
 'stopOnDefeated':True,
 'stopOnKizunaReisou':True,
